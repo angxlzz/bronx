@@ -1,4 +1,3 @@
---6:08PM
 	local scale = 0.75
 	local uis = game:GetService("UserInputService") 
 	local players = game:GetService("Players") 
@@ -236,7 +235,7 @@
 		end)
 
 		library:connection(uis.InputChanged, function(input, game_event) 
-			if resizing and input.UserInputType == Enum.UserInputType.MouseMovement then
+			if resizing and input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
 				local viewport_x = camera.ViewportSize.X
 				local viewport_y = camera.ViewportSize.Y
 
@@ -304,7 +303,7 @@
 		end)
 
 		library:connection(uis.InputChanged, function(input, game_event) 
-			if dragging and input.UserInputType == Enum.UserInputType.MouseMovement then
+			if dragging and input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
 				local viewport_x = camera.ViewportSize.X
 				local viewport_y = camera.ViewportSize.Y
 
@@ -1916,7 +1915,7 @@
 		end)
 
 		library:connection(uis.InputChanged, function(input)
-			if cfg.dragging and input.UserInputType == Enum.UserInputType.MouseMovement then 
+			if cfg.dragging and input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then 
 				local size_x = (input.Position.X - items[ "slider" ].AbsolutePosition.X) / items[ "slider" ].AbsoluteSize.X
 				local value = ((cfg.max - cfg.min) * size_x) + cfg.min
 				cfg.set(value)
@@ -2810,7 +2809,7 @@
 		end)
 
 		uis.InputChanged:Connect(function(input)
-			if (dragging_sat or dragging_hue or dragging_alpha) and input.UserInputType == Enum.UserInputType.MouseMovement then
+			if (dragging_sat or dragging_hue or dragging_alpha) and input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
 				cfg.update_color() 
 			end
 		end)
